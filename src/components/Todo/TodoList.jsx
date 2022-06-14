@@ -29,26 +29,28 @@ function TodoList({ todoList, onTodoClick, removeTodo }) {
 
   return (
     <ul className="todo-list">
-      {todoList.map((todo, idx) => (
-        <li className="todo-item">
-          <div
-            key={todo.id}
-            className={classNames({
-              "todo-text": true,
-              completed: todo.status === "completed",
-            })}
-            onClick={() => handleTodoClick(todo, idx)}
-          >
-            {todo.text}
-          </div>
-          <div className="icons">
-            <RiDeleteBinLine
-              onClick={() => removeTodoClick(todo, idx)}
-              className="delete-icon"
-            />
-          </div>
-        </li>
-      ))}
+      {todoList.map((todo, idx) => {
+        console.log(todo);
+        return (
+          <li className="todo-item" key={todo.id}>
+            <div
+              className={classNames({
+                "todo-text": true,
+                completed: todo.status === "completed",
+              })}
+              onClick={() => handleTodoClick(todo, idx)}
+            >
+              {todo.text}
+            </div>
+            <div className="icons">
+              <RiDeleteBinLine
+                onClick={() => removeTodoClick(todo, idx)}
+                className="delete-icon"
+              />
+            </div>
+          </li>
+        );
+      })}
     </ul>
   );
 }
